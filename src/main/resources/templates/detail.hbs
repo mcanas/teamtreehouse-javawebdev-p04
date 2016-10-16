@@ -1,0 +1,49 @@
+{{#partial "entryAction"}}
+    <a class="new-entry button button-round" href="/entry/{{entry.slug}}/edit"><i class="material-icons">create</i></a>
+{{/partial}}
+
+{{#partial "siteMain"}}
+<section>
+    <div class="container">
+        <div class="entry-list single">
+            <article>
+                <h1>{{entry.title}}</h1>
+                <time datetime="{{entry.createdOn}}">{{entry.createdOn}}</time>
+                <div class="entry">
+                    <p>{{entry.body}}</p>
+                    <p><a class="link" href="/entry/{{entry.slug}}/edit">Edit Entry</a></p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+<section class="entry-comments">
+    <div class="container">
+        <h2>Comments</h2>
+        {{#if entry.comments}}
+            {{#each entry.comments}}
+            <div class="comment">
+                <strong>{{name}}</strong>
+                <time datetime="{{createdOn}}">{{createdOn}}</time>
+                <p>{{comment}}</p>
+            </div>
+            {{/each}}
+        {{else}}
+            <div class="comment">
+                <p>No Comments</p>
+            </div>
+        {{/if}}
+        <div class="new-comment">
+            <form action="/entry/{{entry.slug}}/comment/new" method="POST">
+                <label for="name"> Name</label>
+                <input type="text" name="name"><br>
+                <label for="comment">Comment</label>
+                <textarea rows="5" name="comment"></textarea>
+                <input type="submit" value="Post Comment" class="button">
+            </form>
+        </div>
+    </div>
+</section>
+{{/partial}}
+
+{{> base.hbs}}
