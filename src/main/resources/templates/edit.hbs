@@ -6,6 +6,8 @@
             <input type="text" name="title" value="{{entry.title}}"><br>
             <label for="entry">Entry</label>
             <textarea rows="5" name="body">{{entry.body}}</textarea>
+            <label for="tags"> Tags</label>
+            <input type="text" name="tags" placeholder="Example: #foo #bar-baz" value="{{entry.formattedTags}}"><br>
             <input type="submit" value="Publish Entry" class="button">
             <a href="/entry/{{entry.slug}}" class="button button-secondary">Cancel</a>
         </form>

@@ -9,6 +9,7 @@ public interface BlogDao {
     boolean addEntry(BlogEntry entry);
     boolean removeEntry(BlogEntry entry);
     List<BlogEntry> findAllEntries();
+    List<BlogEntry> findEntriesByTag(String tag);
     BlogEntry findEntryBySlug(String slug);
     boolean addComment(String slug, BlogComment blogComment);
 }

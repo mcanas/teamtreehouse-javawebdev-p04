@@ -7,6 +7,7 @@ import com.teamtreehouse.blog.model.BlogEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SimpleBlogDao implements BlogDao {
     List<BlogEntry> entries;
@@ -28,6 +29,13 @@ public class SimpleBlogDao implements BlogDao {
     @Override
     public List<BlogEntry> findAllEntries() {
         return entries;
+    }
+
+    @Override
+    public List<BlogEntry> findEntriesByTag(String tag) {
+        return findAllEntries().stream()
+                .filter(e -> e.getTags().contains(tag))
+                .collect(Collectors.toList());
     }
 
     @Override

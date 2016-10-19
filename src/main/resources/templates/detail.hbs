@@ -8,9 +8,16 @@
         <div class="entry-list single">
             <article>
                 <h1>{{entry.title}}</h1>
-                <time datetime="{{entry.createdOn}}">{{entry.createdOn}}</time>
+                <time datetime="{{entry.createdOn}}">{{entry.formattedCreatedOn}}</time>
                 <div class="entry">
                     <p>{{entry.body}}</p>
+                    {{#if entry.tags}}
+                        <p>Tags:
+                            {{#each entry.tags}}
+                                <a href="/tag/{{this}}">#{{this}}</a>
+                            {{/each}}
+                        </p>
+                    {{/if}}
                     <p><a class="link" href="/entry/{{entry.slug}}/edit">Edit Entry</a></p>
                 </div>
             </article>

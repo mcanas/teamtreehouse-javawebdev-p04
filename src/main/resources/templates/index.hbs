@@ -3,7 +3,14 @@
         {{#each entries}}
             <article>
                 <h2><a href="/entry/{{slug}}">{{title}}</a></h2>
-                <time datetime="{{createdOn}}">{{createdOn}}</time>
+                <time datetime="{{createdOn}}">{{formattedCreatedOn}}</time>
+                {{#if this.tags}}
+                    <p>Tags:
+                        {{#each this.tags}}
+                            <a href="/tag/{{this}}">#{{this}}</a>
+                        {{/each}}
+                    </p>
+                {{/if}}
             </article>
         {{/each}}
     </div>
